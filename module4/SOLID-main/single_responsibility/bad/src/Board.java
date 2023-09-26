@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.uitl.List;
 
 /**
  * Created by mrk on 4/7/14.
@@ -13,32 +14,32 @@ public class Board {
         }
     }
 
-    public ArrayList<String> firstRow() {
-        ArrayList<String> firstRow = new ArrayList<String>();
-        firstRow.add(this.spots.get(0));
-        firstRow.add(this.spots.get(1));
-        firstRow.add(this.spots.get(2));
-        return firstRow;
+    private List<String> row(int[] arrSpotIndex) {
+        List<String> row = new ArrayList<String>();
+        for (int i = 0; i < arrSpotIndex; ++i) {
+            row.add(this.spots.get(arrSpotIndex[i]));
+        }
+        return row;
     }
 
-    public ArrayList<String> secondRow() {
-        ArrayList<String> secondRow = new ArrayList<String>();
-        secondRow.add(this.spots.get(3));
-        secondRow.add(this.spots.get(4));
-        secondRow.add(this.spots.get(5));
-        return secondRow;
+    public List<String> firstRow() {
+        return row({0, 1, 2};
     }
 
-    public ArrayList<String> thirdRow() {
-        ArrayList<String> thirdRow = new ArrayList<String>();
-        thirdRow.add(this.spots.get(6));
-        thirdRow.add(this.spots.get(7));
-        thirdRow.add(this.spots.get(8));
-        return thirdRow;
+    public List<String> secondRow() {
+        return row({3, 4, 5};
+    }
+
+    public List<String> thirdRow() {
+        return row({6, 7, 8};
+    }
+
+    private String display(int[] arrSpotIndex) {
+        return this.spots.get(arrSpotIndex[0]) + " | " + this.spots.get(arrSpotIndex[1]) + " | " + this.spots.get(arrSpotIndex[2]) + "\n";
     }
 
     public void display() {
-        String formattedFirstRow = this.spots.get(0) + " | " + this.spots.get(1) + " | " + this.spots.get(2) + "\n" + this.spots.get(3) + " | " + this.spots.get(4) + " | " + this.spots.get(5) + "\n" + this.spots.get(6) + " | " + this.spots.get(7) + " | " + this.spots.get(8);
-        System.out.print(formattedFirstRow);
+        String formattedRow = display({0, 1, 2}) + display({3, 4, 5}) + display({6, 7, 8});
+        System.out.print(formattedRow);
     }
 }
